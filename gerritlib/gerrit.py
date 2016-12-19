@@ -309,6 +309,16 @@ class Gerrit(object):
         out, err = self._ssh(cmd)
         return filter(None, out.split('\n'))
 
+    def listGroup(self, group, verbose=False):
+        if verbose:
+            cmd = 'gerrit ls-groups -v'
+        else:
+            cmd = 'gerrit ls-groups'
+        # ensure group names with spaces are escaped and quoted
+        group = "\"%s\"" % group.replace(' ', '\ ')
+        out, err = self._ssh(' '.join([cmd, '-q', group]))
+        return filter(None, out.split('\n'))
+
     def listPlugins(self):
         plugins = self.getPlugins()
         plugin_names = plugins.keys()
