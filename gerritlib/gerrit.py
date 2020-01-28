@@ -408,13 +408,13 @@ class Gerrit(object):
             self.log.debug("SSH command:\n%s" % command)
             stdin, stdout, stderr = client.exec_command(command)
 
-            out = stdout.read()
+            out = stdout.read().decode('utf8')
             self.log.debug("SSH received stdout:\n%s" % out)
 
             ret = stdout.channel.recv_exit_status()
             self.log.debug("SSH exit status: %s" % ret)
 
-            err = stderr.read()
+            err = stderr.read().decode('utf8')
             self.log.debug("SSH received stderr:\n%s" % err)
         finally:
             if client:
