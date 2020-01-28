@@ -118,10 +118,10 @@ class GerritWatcher(threading.Thread):
         """
         super(GerritWatcher, self).__init__()
         self.connection = GerritConnection(
-            username or gerrit.username,
-            hostname or gerrit.hostname,
-            port or gerrit.port,
-            keyfile or gerrit.keyfile,
+            username or gerrit.connection.username,
+            hostname or gerrit.connection.hostname,
+            port or gerrit.connection.port,
+            keyfile or gerrit.connection.keyfile,
             connection_attempts,
             retry_delay
         )
@@ -202,7 +202,7 @@ class Gerrit(object):
 
     def startWatching(self, connection_attempts=-1, retry_delay=5):
         self.event_queue = six.moves.queue.Queue()
-        watcher = GerritWatcher(self.connection,
+        watcher = GerritWatcher(self,
                                 connection_attempts=connection_attempts,
                                 retry_delay=retry_delay)
         self.watcher_thread = watcher
