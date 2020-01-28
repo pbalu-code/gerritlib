@@ -4,5 +4,6 @@ include ChangeLog
 
 exclude .gitignore
 exclude .gitreview
+exclude tools/sshkey
 
 global-exclude *.pyc
