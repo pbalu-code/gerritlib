@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-    - name: install-docker
+    - name: ensure-docker
   tasks:
     # Configure Jeepyb and Gerritlib
     - name: Create jeepyb git directory
