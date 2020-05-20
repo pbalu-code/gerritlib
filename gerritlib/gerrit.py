@@ -126,6 +126,7 @@ class GerritWatcher(threading.Thread):
             retry_delay
         )
         self.gerrit = gerrit
+        self.retry_delay = float(retry_delay)
         self.state = IDLE
 
     def _read(self, fd):
