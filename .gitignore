@@ -2,6 +2,7 @@
 *.egg-info
 
 .tox
+.stestr
 build/*
 *.pyc
 gerritlib/versioninfo
