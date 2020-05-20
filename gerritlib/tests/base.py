@@ -1,5 +1,5 @@
-import testtools
+import unittest
 
 
-class TestCase(testtools.TestCase):
-    "Placeholder wrapper for the testtools.TestCase class."
+class TestCase(unittest.TestCase):
+    "Placeholder wrapper for the TestCase class."

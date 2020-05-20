@@ -19,10 +19,13 @@ test_gerritlib
 Tests for `gerritlib` module.
 """
 
+from gerritlib.gerrit import GerritConnection
 from gerritlib.tests import base
+from paramiko.ssh_exception import NoValidConnectionsError
 
 
 class TestGerritlib(base.TestCase):
 
-    def test_something(self):
-        pass
+    def test_invalid_connection(self):
+        with self.assertRaises(NoValidConnectionsError):
+            GerritConnection(connection_attempts=1, retry_delay=1).connect()

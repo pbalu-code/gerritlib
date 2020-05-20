@@ -11,6 +11,12 @@
     check:
       jobs:
         - gerritlib-jeepyb-integration
+        - tox-py36
+        - tox-py37
+        - tox-py38
     gate:
       jobs:
         - gerritlib-jeepyb-integration
+        - tox-py36
+        - tox-py37
+        - tox-py38
