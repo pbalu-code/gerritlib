@@ -130,8 +130,8 @@ class GerritWatcher(threading.Thread):
         self.state = IDLE
 
     def _read(self, fd):
-        l = fd.readline()
-        data = json.loads(l)
+        line = fd.readline()
+        data = json.loads(line)
         self.log.debug("Received data from Gerrit event stream: \n%s" %
                        pprint.pformat(data))
         self.gerrit.addEvent(data)
@@ -316,7 +316,7 @@ class Gerrit(object):
         else:
             cmd = 'gerrit ls-groups'
         # ensure group names with spaces are escaped and quoted
-        group = "\"%s\"" % group.replace(' ', '\ ')
+        group = "\"%s\"" % group.replace(' ', r'\ ')
         out, err = self._ssh(' '.join([cmd, '-q', group]))
         return list(filter(None, out.split('\n')))
 
