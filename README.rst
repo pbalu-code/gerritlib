@@ -7,7 +7,7 @@ Added new features:
 
 - Create project options: parent, owner option.
 
-
+( Help: https://gerrit-review.googlesource.com/Documentation/cmd-create-project.html )
 
 
 Gerritlib is a Python library for interacting with Gerrit_.
