@@ -1,6 +1,15 @@
 README
 ======
 
+This is a fork of the original gerritlib repo: https://opendev.org/opendev/gerritlib
+
+Added new features:
+
+- Create project options: parent, owner option.
+
+
+
+
 Gerritlib is a Python library for interacting with Gerrit_.
 It aims to provide a more conventionally pythonic way of managing a
 Gerrit instance.

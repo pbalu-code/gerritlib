@@ -257,12 +257,18 @@ class Gerrit(object):
         self._setMember('remove', group, member)
 
     def createProject(self, project, require_change_id=True, empty_repo=False,
-                      description=None):
+                      description=None, parent=None, owner=None):
         cmd = 'gerrit create-project'
         if require_change_id:
             cmd = '%s --require-change-id' % cmd
         if empty_repo:
             cmd = '%s --empty-commit' % cmd
+        if parent:
+            cmd = "%s --parent \"%s\"" % \
+                  (cmd, parent.replace('"', r'\"'))
+        if owner:
+            cmd = "%s --owner \"%s\"" % \
+                  (cmd, owner.replace('"', r'\"'))
         if description:
             cmd = "%s --description \"%s\"" % \
                   (cmd, description.replace('"', r'\"'))
